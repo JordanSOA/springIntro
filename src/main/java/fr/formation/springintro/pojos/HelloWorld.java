@@ -7,6 +7,7 @@ public class HelloWorld {
     private String text;
     private String date;
 
+
     public HelloWorld(String text) {
         this.text = text;
     }
