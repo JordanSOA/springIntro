@@ -2,11 +2,12 @@ package fr.formation.springintro.controllers;
 
 
 import fr.formation.springintro.pojos.HelloWorld;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
 
 @RestController
 public class HelloController {
@@ -23,6 +24,13 @@ public class HelloController {
     @GetMapping("/hello")
     public HelloWorld helloWorld(){
         return new HelloWorld("Hello World !");
+    }
+
+    @GetMapping("/customHeader")
+    ResponseEntity<String> customHeader() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Test", "Test Sympa");
+        return new ResponseEntity<>("Custom header set", headers, HttpStatus.OK);
     }
 
 }
